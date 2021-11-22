@@ -1,5 +1,4 @@
 package tictactoe;
-import java.sql.Array;
 import java.util.Scanner;
 
 
@@ -7,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner c = new Scanner(System.in);
         char[][] board = {{'_','_','_'},{'_','_','_'},{'_','_','_'}};
-        while (getState(board) == "Game not finished"){
+        while (getState(board).equals("Game not finished")){
             displayBoard(board);
             int[] move = getMove(c);
             makeMove(board, move[0],move[1],turn(board),c);
@@ -15,29 +14,8 @@ public class Main {
         }
         displayBoard(board);
         System.out.println(getState(board));
-        /*String cells = c.next();
-        char[][] board  = boardData(cells);
-        displayBoard(board);
-        System.out.println(getState(board));
-        char plays;
-        //plays = turn(board);
-        plays = 'X';
-        int[] move = getMove(c);
-        board = makeMove(board,move[0],move[1],plays,c);
-        displayBoard(board);*/
 
 
-    }
-
-    public static char[][] boardData(String input) {
-        char[][] board = new char[3][3];
-        int i = 0;
-        for (int r = 0; r < board.length; r++) {
-            for (int c = 0; c < board[r].length; c++) {
-                board[r][c] = input.charAt(i++);
-            }
-        }
-        return board;
     }
 
 
@@ -134,8 +112,7 @@ public class Main {
             if (exp.matches("[1-3]") && exp2.matches("[1-3]")){
                 int x = Integer.parseInt(exp);
                 int y = Integer.parseInt(exp2);
-                int[] a = {x,y};
-                return a;
+                return new int[]{x,y};
             } else{
                 System.out.println("Coordinates should be from 1 to 3!");
                 return getMove(c);
